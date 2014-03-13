@@ -6,7 +6,12 @@ describe User do
   end
 
   it { should validate_presence_of :login }
-  it { should validate_uniqueness_of :login }
+  it "is invalid without a unique login" do
+    FactoryGirl.create(:user)
+    expect(User.new).to validate_uniqueness_of :login
+  end
+  
+  it { should have_secure_password }
   
   it { should have_many :messages }
   

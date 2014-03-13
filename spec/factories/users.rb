@@ -1,6 +1,8 @@
 FactoryGirl.define do
   factory :user, aliases: [:author], class: User do
     login "jerry"
+    password "abcd1234"
+    password_confirmation "abcd1234"
   end
   
   factory :invalid_user, parent: :user do

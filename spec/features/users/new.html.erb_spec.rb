@@ -5,6 +5,8 @@ describe "users/new.html.erb" do
     expect {
       visit new_user_path
       fill_in "Login", with: "jerry"
+      fill_in "Password", with: "abcd1234"
+      fill_in "Password confirmation", with: "abcd1234"
       click_button "Create User"
     }.to change(User, :count).by(1)
     current_path.should == messages_path
